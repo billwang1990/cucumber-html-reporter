@@ -1,10 +1,10 @@
 {
-  "name": "cucumber-html-reporter",
+  "name": "cucumber-html-reporter-cli",
   "version": "0.2.16",
-  "description": "Generates Cucumber HTML reports in three different themes",
+  "description": "Generates Cucumber HTML reports in three different themes by command line",
   "main": "index.js",
   "bin": {
-     "cucumber-html-reporter": "index.js"
+     "cucumber-html-reporter-cli": "index.js"
   },
   "author": {
     "name": "kushang gajjar",
