@@ -1,35 +1,28 @@
-/*-----------------------------------------------------------------------------------------*\
- |  The MIT License (MIT)                                                                    |
- |                                                                                           |
- |  Copyright (c) 2015                                                                |
- |                                                                                           |
- |  Permission is hereby granted, free of charge, to any person obtaining a copy             |
- |  of this software and associated documentation files (the "Software"), to deal            |
- |  in the Software without restriction, including without limitation the rights             |
- |  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell                |
- |  copies of the Software, and to permit persons to whom the Software is                    |
- |  furnished to do so, subject to the following conditions:                                 |
- |                                                                                           |
- |      The above copyright notice and this permission notice shall be included in           |
- |  all copies or substantial portions of the Software.                                      |
- |                                                                                           |
- |      THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR           |
- |  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,                 |
- |      FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE          |
- |  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER                   |
- |  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,            |
- |      OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN            |
- |  THE SOFTWARE.                                                                            |
- \*---------------------------------------------------------------------------------------- */
+#!/usr/bin/env node
 
 'use strict';
 
 var reporter = require('./lib/reporter');
+var program = require('commander');
 
-function generateReport(options) {
-    return reporter.generate(options);
-}
+program
+	.version('0.2.16')
+	.option('-t, --theme <string>', 'html report theme name, e.g. bootstrap')
+	.option('-j, --jsonFile <string>', 'json file name')
+	.option('-J, --jsonDir <string>', 'specify the multiple json files directory')
+	.option('-o, --output <string>', 'output directory')
+	.option('-l, --launchReport', 'launch the report page after finish')
+	.option('-r, --reportSuiteAsScenarios', 'report suite as scenarios')
+	.parse(process.argv);
 
-module.exports = {
-    generate: generateReport
+var options = {
+    theme: program.theme || 'bootstrap',
+    jsonFile: program.jsonFile,
+    jsonDir: program.jsonDir,
+    output: program.output,
+    reportSuiteAsScenarios: program.launchReport || true,
+    launchReport: program.reportSuiteAsScenarios || true
 };
+
+reporter.generate(options);
+
