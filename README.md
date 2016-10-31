@@ -1,4 +1,4 @@
-cucumber-html-reporter
+cucumber-html-reporter-cli
 ======================
 
 [![Build Status](https://travis-ci.org/gkushang/cucumber-html-reporter.svg?branch=develop)](https://travis-ci.org/gkushang/cucumber-html-reporter) [![v](https://img.shields.io/npm/v/cucumber-html-reporter.svg)](https://www.npmjs.com/package/cucumber-html-reporter)
@@ -36,7 +36,7 @@ Provide Cucumber JSON report file created from your framework and this module wi
 Example of `bootstrap` theme:
 
 ``` bash
-cucumber-html-reporter -j 'functionals.json' -o 'report.html' -t 'bootstrap'
+cucumber-html-reporter-cli -j 'functionals.json' -o 'report.html' -t 'bootstrap'
 
     //to generate consodilated report from multi-cucumber JSON files, please use `jsonDir` option instead of `jsonFile`. More info is available in `options` section below.
 
