@@ -13,6 +13,7 @@ program
 	.option('-o, --output <string>', 'output directory')
 	.option('-l, --launchReport', 'launch the report page after finish')
 	.option('-r, --reportSuiteAsScenarios', 'report suite as scenarios')
+	.option('-n, --name', 'report name')
 	.parse(process.argv);
 
 var options = {
@@ -20,6 +21,7 @@ var options = {
     jsonFile: program.jsonFile,
     jsonDir: program.jsonDir,
     output: program.output,
+    name: program.name,
     reportSuiteAsScenarios: program.launchReport || true,
     launchReport: program.reportSuiteAsScenarios || true
 };
